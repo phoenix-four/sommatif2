@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>Formulaire</title>
  <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-<div class='page'>
+ <div class='page'>
  <header>
  <?php echo $this->runChild('fragments.entete'); ?>
  </header>
-</div>
+ </div>
 
-<main>
+ <main>
  <?php echo $this->yieldContent('contenu'); ?>
-</main>
+ </main>
 
-<footer>
+ <footer>
  <?php echo $this->runChild('fragments.pieddepage'); ?>
-</footer>
+ </footer>
 
-<script src="./js/validations.js"></script>
+ <?php 
+ //<script src="./js/validations.js"></script>
+ ?>
 
 </body>
+
 </html>
-
-
-
-
