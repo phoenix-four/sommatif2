@@ -63,6 +63,17 @@ class ControleurContact
         $tValidation = Validateur::validerChamp('message', "#^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüoeçÇ'«»=@:]*$#", $tMessagesJson, $tValidation, true);
         $tValidation = Validateur::validerChamp('responsable_id', "#^\d{1}$#", $tMessagesJson, $tValidation, true);
 
+        
+
+
+        foreach ($tValidation as $validation) {
+            if($validation['valide']=="faux")
+            {
+                header('index.php?controleur=contact');
+
+            }
+        }
+
         return $tValidation;
     }
 }
