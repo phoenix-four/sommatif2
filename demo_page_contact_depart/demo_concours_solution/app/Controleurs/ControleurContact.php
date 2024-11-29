@@ -44,9 +44,23 @@ class ControleurContact
         $tValidation = $this->validation();
 
 
-        var_dump($tValidation);
+        // var_dump($tValidation);
 
-        // À compléter...
+        $contact = new Contact();
+
+
+        $contact->setNom($tValidation["nom"]["valeur"]);
+        $contact->setCourriel($tValidation["courriel"]["valeur"]);
+        $contact->setTelephone($tValidation["telephone"]["valeur"]);
+        $contact->setAcceptationPartage($tValidation["acceptation_partage"]["valeur"]);
+        $contact->setSujet($tValidation["sujet"]["valeur"]);
+        $contact->setMessage($tValidation["message"]["valeur"]);
+        $contact->setResponsableId((int)$tValidation["responsable_id"]["valeur"]);
+
+        $contact->inserer();
+
+        header("Location: index.php?controleur=contact&action=creer");
+        die();
     }
 
 
