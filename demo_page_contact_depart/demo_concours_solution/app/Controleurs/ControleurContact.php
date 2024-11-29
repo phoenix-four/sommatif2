@@ -36,18 +36,12 @@ class ControleurContact
 
     public function inserer(): void
     {
-
-
-        // Valider chaque champ et garder le résultat dans tValidation
-
         $tValidation = [];
         $tValidation = $this->validation();
-
 
         // var_dump($tValidation);
 
         $contact = new Contact();
-
 
         $contact->setNom($tValidation["nom"]["valeur"]);
         $contact->setCourriel($tValidation["courriel"]["valeur"]);
@@ -60,7 +54,7 @@ class ControleurContact
         $contact->inserer();
 
         header("Location: index.php?controleur=contact&action=creer");
-        die();
+        exit();
     }
 
 
@@ -77,14 +71,12 @@ class ControleurContact
         $tValidation = Validateur::validerChamp('message', "#^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüoeçÇ'«»=@:]*$#", $tMessagesJson, $tValidation, true);
         $tValidation = Validateur::validerChamp('responsable_id', "#^\d{1}$#", $tMessagesJson, $tValidation, true);
 
-        
+
 
 
         foreach ($tValidation as $validation) {
-            if($validation['valide']=="faux")
-            {
+            if ($validation['valide'] == "faux") {
                 header('index.php?controleur=contact');
-
             }
         }
 
