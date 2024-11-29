@@ -42,12 +42,12 @@ class ControleurContact
         // Valider chaque champ et garder le résultat dans tValidation
         $tValidation = [];
         $tValidation = Validateur::validerChamp('nom', "#^[a-zA-ZÀ-ÿ' -]+$#", $tMessagesJson, $tValidation, true);
-        $tValidation = Validateur::validerChamp('courriel', "^[a-zA-Z0-9][a-zA-Z0-9-]+([.][a-zA-Z0-9-]+)[@][a-zA-Z0-9-]+([.][a-zA-Z0-9-]+)[.][a-zA-Z]{2,}$", $tMessagesJson, $tValidation, true);
-        $tValidation = Validateur::validerChamp('telephone', "^\d{10}$", $tMessagesJson, $tValidation, true);
-        $tValidation = Validateur::validerChamp('acceptation_partage', "^(on|off)$", $tMessagesJson, $tValidation, true);
+        $tValidation = Validateur::validerChamp('courriel', "#^[a-zA-Z0-9][a-zA-Z0-9-]+([.][a-zA-Z0-9-]+)[@][a-zA-Z0-9-]+([.][a-zA-Z0-9-]+)[.][a-zA-Z]{2,}$#", $tMessagesJson, $tValidation, true);
+        $tValidation = Validateur::validerChamp('telephone', "#^\d{10}$#", $tMessagesJson, $tValidation, true);
+        $tValidation = Validateur::validerChamp('acceptation_partage', "#^(on|off)$#", $tMessagesJson, $tValidation, true);
         $tValidation = Validateur::validerChamp('sujet', "#^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüoeçÇ'«»=@:]*$#", $tMessagesJson, $tValidation, true);
         $tValidation = Validateur::validerChamp('message', "#^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüoeçÇ'«»=@:]*$#", $tMessagesJson, $tValidation, true);
-        $tValidation = Validateur::validerChamp('responsable_id', "^\d{1}$", $tMessagesJson, $tValidation, true);
+        $tValidation = Validateur::validerChamp('responsable_id', "#^\d{1}$#", $tMessagesJson, $tValidation, true);
 
         var_dump($tValidation);
 
@@ -55,10 +55,5 @@ class ControleurContact
     }
 
 
-    private function validation()
-    {
-        
-    }
-
-
+    private function validation() {}
 }
