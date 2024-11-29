@@ -36,13 +36,14 @@ class ControleurContact
 
     public function inserer(): void
     {
-        $tValidation = [];
         $tValidation = $this->validation();
 
-        // var_dump($tValidation);
+        if ($tValidation == false) {
+            //gere les erreurs
+            return;
+        }
 
         $contact = new Contact();
-
         $contact->setNom($tValidation["nom"]["valeur"]);
         $contact->setCourriel($tValidation["courriel"]["valeur"]);
         $contact->setTelephone($tValidation["telephone"]["valeur"]);
@@ -58,10 +59,11 @@ class ControleurContact
     }
 
 
-    private function validation(): array
+    private function validation(): array|bool
     {
         $fichierJson = file_get_contents("../ressources/lang/fr_CA.UTF-8/messagesValidation.json"); // Récupérer le contenu des messages en format JSON
         $tMessagesJson = json_decode($fichierJson, true); // Convertir en tableau associatif
+        $result = null;
         $tValidation = [];
         $tValidation = Validateur::validerChamp('nom', "#^[a-zA-ZÀ-ÿ' -]+$#", $tMessagesJson, $tValidation, true);
         $tValidation = Validateur::validerChamp('courriel', "#^[a-zA-Z0-9][a-zA-Z0-9-]+([.][a-zA-Z0-9-]+)[@][a-zA-Z0-9-]+([.][a-zA-Z0-9-]+)[.][a-zA-Z]{2,}$#", $tMessagesJson, $tValidation, true);
@@ -76,10 +78,12 @@ class ControleurContact
 
         foreach ($tValidation as $validation) {
             if ($validation['valide'] == "faux") {
-                header('index.php?controleur=contact');
+                $result = false;
+                return $result;
             }
         }
+        $result = $tValidation;
 
-        return $tValidation;
+        return $result;
     }
 }
