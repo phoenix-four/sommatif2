@@ -1,0 +1,224 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('contenu'); ?>
+
+<form action="index.php?controleur=contact&action=inserer" method="POST">
+
+ <h2>Contact</h2>
+
+ 
+ <!-- Nom ---------------------->
+ <div class="ctnForm">
+ <p>
+ <label for="nom">Nom
+ <?php if($tValidation !== null): ?>
+ <?php if($tValidation['nom']['valide'] == 'vrai'): ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php endif; ?>
+ <?php endif; ?>
+ </label>
+
+ <input type="text"
+ name="nom" id="nom"
+ placeholder="Nom"
+ value = ""
+ required
+ pattern="^[a-zA-ZÀ-ÿ' -]+$"
+ title="Caractères alphabétiques français seulement."
+ >
+ </p>
+ 
+ <p class="erreur__message">
+ <?php if($tValidation != null): ?>
+ <?php if($tValidation['nom']['valide']=='faux'): ?>
+ <span class="spriteRETRO spriteRETRO--warning"></span>
+ <?php echo static::e($tValidation['nom']['message']); ?>
+
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+ </div>
+ 
+
+ <!-- Courriel ---------------------->
+
+
+ <div class="ctnForm">
+ <p>   
+ <label for="courriel">Courriel
+ <?php if($tValidation !== null): ?>
+ <?php if($tValidation['courriel']['valide']=='vrai' ): ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php endif; ?>
+ <?php endif; ?>
+ </label>
+
+ <input type="email"
+ name="courriel"
+ pattern="^[a-zA-Z0-9][a-zA-Z0-9_-]+([.][a-zA-Z0-9_-]+)*[@][a-zA-Z0-9_-]+([.][a-zA-Z0-9_-]+)*[.][a-zA-Z]{2,}$"
+ value=""
+ id="courriel" required>
+ </p>
+ <p class="erreur__message">
+ <?php if($tValidation != null): ?>
+ <?php if($tValidation['courriel']['valide']=='faux'): ?>
+ <span class="spriteRETRO spriteRETRO--warning"></span><?php echo static::e($tValidation['courriel']['message']); ?>
+
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+ </div>
+ 
+
+ <!-- Téléphone ---------------------->
+ <div class="ctnForm ctnForm--regulier" >
+ <p>
+ <label for="telephone">Numéro de téléphone (10 chiffres)
+ <?php if($tValidation != null): ?>
+ <?php if($tValidation['telephone']['valide']=='vrai'): ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php endif; ?>
+ <?php endif; ?>
+ </label>
+
+ <input type="tel" name="telephone" id="telephone"
+ title="Numéro, 10 chiffres"
+ value=""
+ class="notelephone" required
+ minlength="10"
+ maxlength="10" 
+ pattern="^[0-9]{10}$"
+ >
+ </p>
+
+ <p class="erreur__message">
+ <?php if($tValidation != null): ?>
+ <?php if($tValidation['telephone']['valide'] == 'faux'): ?>
+ <span class="spriteRETRO spriteRETRO--warning"></span>
+ <?php echo static::e($tValidation['telephone']['message']); ?>
+
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+ </div>
+
+ <!-- Acceptation partage ---------------------->
+ <div class="ctnForm">
+ <p>
+ <input name="acceptation_partage"
+ id="acceptation_partage"
+ type="checkbox"
+ >
+ <label for="acceptation_partage"> J’AUTORISE LE PARTAGE DE MON NUMÉRO AVEC UN ÉTUDIANT-GUIDE.</label>
+ </p>
+ </div>
+
+
+ <!-- Destinataire ---------------------->
+ 
+ <div class="ctnForm ctnForm--regulier">
+ <p>
+ <label for="responsable_id">Destinataire
+ <?php if($tValidation != null): ?>
+ <?php if($tValidation['responsable_id']['valide']=='vrai'): ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php endif; ?> 
+ <?php endif; ?>
+ </label>
+ <select name="responsable_id" id="responsable_id" required >
+ <option value="">Choisir un responsable</option>
+ <option value="1">Sylvain Lamoureux (Coordonateur départemental)</option>
+ <option value="2">Ève Février (Webmestre)</option>
+ <option value="3">Benoît Frigon (Responsable Étudiant.e d'un jour)</option>
+ <option value="4">Pascal Larose (Coordonateur des stages)</option>
+ </select>
+ </p>
+
+ <p class="erreur__message">
+ <?php if($tValidation != null): ?>
+ <?php if($tValidation['responsable_id']['valide']=='faux'): ?>
+ <span class="spriteRETRO spriteRETRO--warning"></span><?php echo static::e($tValidation['responsable_id']['message']); ?>
+
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+ </div>
+
+
+
+ <!-- Sujet ---------------------->
+ <div class="ctnForm">
+ <p>
+ <label for="sujet">Sujet
+ <?php if($tValidation != null): ?>
+ <?php if($tValidation['sujet']['valide']=='vrai' ): ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php endif; ?>
+ <?php endif; ?>
+ </label>
+ <input type="text"
+ name="sujet" id="sujet"
+ placeholder="Sujet"
+ value = ""
+ required
+ pattern="^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüœçÇ'«»=@:]*$"
+ title="Caractères alphabétiques français seulement."
+ >
+ </p>
+ 
+ <p class="erreur__message">
+ <?php if($tValidation !=null): ?>
+ <?php if($tValidation['sujet']['valide']=='faux'): ?>
+ <span class="spriteRETRO spriteRETRO--warning"></span>
+ <?php echo static::e($tValidation['sujet']['message']); ?>
+
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+ </div>
+
+
+ <!-- Message ---------------------->
+ <div class="ctnForm">
+ <p>
+ <label for="message" >Message
+ <?php if($tValidation != null): ?>
+ <?php if($tValidation['message']['valide']=='vrai' ): ?>
+ <span class="spriteRETRO spriteRETRO--ok"></span>
+ <?php endif; ?>
+ <?php endif; ?>
+ </label>
+ <input type="text"
+ name="message" id="message"
+ placeholder="Message"
+ value= ""
+ required
+ pattern="^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüœçÇ'«»=@:]*$"
+ title="Caractères alphabétiques français seulement."
+ >
+ </p>
+ 
+ <p class="erreur__message">
+ <?php if($tValidation !=null): ?>
+ <?php if($tValidation['message']['valide']=='faux'): ?>
+ <span class="spriteRETRO spriteRETRO--warning"></span><?php echo static::e($tValidation['message']['message']); ?>
+
+ <?php endif; ?>
+ <?php endif; ?>
+ </p>
+ </div>
+
+
+
+
+ <!-- Soumission ---------------------->
+ <p class="ctnSoumission ctnForm--horsFieldset">
+ <button name="soumission" class="soumission">Soumettre</button>
+ </p>
+
+</form>
+
+<?php $this->stopSection(); ?>
+
+
+<?php if (@$_shouldextend[1]) { echo $this->runChild('gabarit'); } ?>

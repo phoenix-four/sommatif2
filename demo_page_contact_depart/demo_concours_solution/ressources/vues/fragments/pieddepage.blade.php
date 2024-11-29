@@ -1,0 +1,3 @@
+<p>
+    Pied de page...
+</p>

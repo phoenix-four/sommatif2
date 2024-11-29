@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+
+/**** Formulaire ****/
+
+input{
+    padding:0.35rem;
+    border-radius: 4px;
+}
+
+select {
+    /*-webkit-appearance: menulist;*/
+    /*-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0.4rem;*/
+}
+
+.formSection{
+    border:none;
+    background-color: #dcdcdc;
+    margin-bottom:1rem;
+    border-radius:15px;
+}
+.formSection>legend{
+    position:relative;
+    top:2rem;
+}
+.ctnForm ul{
+    list-style:none;
+    padding-left: 0;
+}
+
+
+
+.ctnForm--regulier label{
+    display: block;
+}
+
+
+
+/* Interactivité */
+
+.ctnForm div,
+.ctnForm p{
+    margin-bottom:0;
+}
+.erreurMessage{
+    margin-top:0;
+    color:red;
+}
+
+.spriteRETRO {
+    display: inline-block;
+    width:32px;
+    height:32px;
+    background-image: url(../images/good-warning-error.png);
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    transform: scale(0.75, 0.75);
+}
+
+.spriteRETRO--ok {
+    background-position:0 0;
+
+}
+
+.spriteRETRO--warning {
+    background-position:-34px 0;
+}
+
+.spriteRETRO--erreur {
+    background-position:-68px 0;
+}
+
+.erreur{
+    border:1px solid red;
+}

@@ -1,0 +1,27 @@
+{
+    "nom": {
+        "vide": "Serveur: Vous devez entrer votre nom complet",
+        "pattern": "Serveur: Pour le nom de famille, les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+    "courriel": {
+        "vide": "Serveur: Vous devez entrer votre adresse courriel",
+        "pattern": "Serveur: Assurez-vous d'entrer une adresse courriel valide."
+    },
+    "telephone": {
+        "vide": "Serveur: Vous devez entrer votre numéro de téléphone",
+        "pattern": "Serveur: Assurez-vous d'entrer seulement dix chiffres sans espace."
+    },
+    "responsable_id": {
+        "vide": "Serveur: Vous devez choisir un.e destinataire.",
+        "pattern": "Serveur: Assurez-vous de sélectionner un destinataire."
+    },
+    "sujet": {
+        "vide": "Serveur: Vous devez entrer un sujet.",
+        "pattern": "Serveur: Pour le sujet, les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+    "message": {
+        "vide": "Serveur: Vous devez entrer un message.",
+        "pattern": "Serveur: Pour le message, les accents français, les espaces, les tirets et les apostrophes sont permis."
+    }
+
+}
