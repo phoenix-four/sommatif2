@@ -66,7 +66,7 @@ class ControleurContact
         $result = null;
         $tValidation = [];
         $tValidation = Validateur::validerChamp('nom', "#^[a-zA-ZÀ-ÿ' -]+$#", $tMessagesJson, $tValidation, true);
-        $tValidation = Validateur::validerChamp('courriel', "#^[a-zA-Z0-9][a-zA-Z0-9-]+([.][a-zA-Z0-9-]+)[@][a-zA-Z0-9-]+([.][a-zA-Z0-9-]+)[.][a-zA-Z]{2,}$#", $tMessagesJson, $tValidation, true);
+        $tValidation = Validateur::validerChamp('courriel', "#^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$#", $tMessagesJson, $tValidation, true);
         $tValidation = Validateur::validerChamp('telephone', "#^\d{10}$#", $tMessagesJson, $tValidation, true);
         $tValidation = Validateur::validerChamp('acceptation_partage', "#^(on|off)$#", $tMessagesJson, $tValidation, true);
         $tValidation = Validateur::validerChamp('sujet', "#^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüoeçÇ'«»=@:]*$#", $tMessagesJson, $tValidation, true);
