@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Utilitaires;
@@ -10,49 +11,68 @@ namespace App\Utilitaires;
 // Est-ce que la méthode est utilisée par plusieurs classes de l'applicaiton?
 // Si oui à toutes ces questions => faire une méthode utilitaire statique !
 
-class Validateur {
+class Validateur
+{
 
-    public static function validerChamp(string $nomChamp, string $motif,array $unTableauMessagesJson, array $unTableauValidation, bool $estRequis){
+    public static function validerChamp(string $nomChamp, string $motif, array $unTableauMessagesJson, array $unTableauValidation, bool $estRequis)
+    {
         $valeur = '';
         $valide = 'faux';
         $message = '';
 
-        if(isset($_POST[$nomChamp])) {
+
+        if (isset($_POST[$nomChamp])) {
             // Si le champ existe dans $_POST
             $valeur = trim($_POST[$nomChamp]);
+            if ($_POST[$nomChamp]) {
+                if ($valeur == "off") {
+                    $valide = 'faux';
+                    $message = $unTableauMessagesJson[$nomChamp]['vide'];
+                } else if ($valeur == "on") {
+                    $valide = 'vrai';
+                } else {
+                    $valide = 'faux';
+                    $message = $unTableauMessagesJson[$nomChamp]['vide'];
+                }
+                return $unTableauValidation;
+            }
 
-            if($valeur == '') {
+
+            if ($valeur == '') {
                 // Si vide
-                if($estRequis){
+
+
+
+                if ($estRequis) {
                     // vide et requis => message d'erreur
-                    $message = $unTableauMessagesJson[$nomChamp]['vide']; 
-                }else{
+                    $message = $unTableauMessagesJson[$nomChamp]['vide'];
+                } else {
                     // vide et non requis => valide
                     $valide = 'vrai';
                 }
-            }else {
+            } else {
                 // Si pas vide, vérifier regEx
                 $trouve = preg_match($motif, $valeur);
                 if (!$trouve) {
                     // RegEx echoué => message d'erreur 
                     $message = $unTableauMessagesJson[$nomChamp]['pattern'];
-                }else{
+                } else {
                     // RegEx réussi => valide
                     $valide = 'vrai';
                 }
             }
-        }else{
+        } else {
             // Si le champ n'existe pas dans $_POST (Exemple: boîte à cocher pas coché.)
-            if(!$estRequis){
+            if (!$estRequis) {
                 // non requis (la boite à cocher peut rester non cochée)
                 $valide = 'vrai';
-            }else{
+            } else {
                 // message d'erreur  (la boite à cocher doit être cochée)
                 $message = $unTableauMessagesJson[$nomChamp]['vide'];
             }
         }
 
-        $unTableauValidation[$nomChamp] = ['valeur' => $valeur, 'valide'=> $valide, 'message' => $message];
+        $unTableauValidation[$nomChamp] = ['valeur' => $valeur, 'valide' => $valide, 'message' => $message];
         return $unTableauValidation;
     }
 }
