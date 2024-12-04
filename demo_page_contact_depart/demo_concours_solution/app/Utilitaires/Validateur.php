@@ -56,7 +56,7 @@ class Validateur
                 $valide = 'vrai';
             } else {
                 // message d'erreur  (la boite à cocher doit être cochée)
-                $message = "Serveur: Vous devez accepter le partage.";
+                $message = $unTableauMessagesJson[$nomChamp]['vide'];
             }
         }
 
