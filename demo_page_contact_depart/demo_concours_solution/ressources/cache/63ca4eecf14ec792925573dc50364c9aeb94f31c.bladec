@@ -2,7 +2,7 @@
 
 <?php $this->startSection('contenu'); ?>
 
-<form action="index.php?controleur=contact&action=inserer" method="POST">
+<form action="index.php?controleur=contact&action=inserer" novalidate method="POST">
 
  <h2>Contact</h2>
 
