@@ -23,19 +23,7 @@ class Validateur
 
         if (isset($_POST[$nomChamp])) {
             // Si le champ existe dans $_POST
-            $valeur = trim($_POST[$nomChamp]);
-            if ($_POST[$nomChamp]=="acceptation_partage") {
-                if ($valeur == "off") {
-                    $valide = 'faux';
-                    $message = $unTableauMessagesJson[$nomChamp]['vide'];
-                } else if ($valeur == "on") {
-                    $valide = 'vrai';
-                } else {
-                    $valide = 'faux';
-                    $message = $unTableauMessagesJson[$nomChamp]['vide'];
-                }
-                return $unTableauValidation;
-            }
+
 
 
             if ($valeur == '') {
@@ -68,7 +56,7 @@ class Validateur
                 $valide = 'vrai';
             } else {
                 // message d'erreur  (la boite à cocher doit être cochée)
-                $message = $unTableauMessagesJson[$nomChamp]['vide'];
+                $message = "Serveur: Vous devez accepter le partage.";
             }
         }
 
