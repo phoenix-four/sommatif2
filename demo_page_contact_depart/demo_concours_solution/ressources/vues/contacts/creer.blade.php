@@ -21,7 +21,7 @@
             <input type="text"
                 name="nom" id="nom"
                 placeholder="Nom"
-                value=""
+                value="<?php echo isset($_POST['nom']) ? $_POST['nom'] : ''; ?>"
                 required
                 pattern="^[a-zA-ZÀ-ÿ' -]+$"
                 title="Caractères alphabétiques français seulement.">
