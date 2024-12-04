@@ -79,11 +79,13 @@ class ControleurContact
         foreach ($tValidation as $validation) {
             if ($validation['valide'] == "faux") {
                 $result = false;
+
                 return $result;
             }
         }
         $result = $tValidation;
 
-        return $result;
+        $tDonnees = array("tValidation" => $tValidation);
+        echo App::getBlade()->run("contacts.creer", $tDonnees);
     }
 }
