@@ -24,8 +24,8 @@ class Validateur
         if (isset($_POST[$nomChamp])) {
             // Si le champ existe dans $_POST
 
-            $valeur= $_POST[$nomChamp];
-            
+            $valeur = $_POST[$nomChamp];
+
             if ($valeur == '') {
                 // Si vide
 
@@ -61,7 +61,7 @@ class Validateur
         }
 
         $unTableauValidation[$nomChamp] = ['valeur' => $valeur, 'valide' => $valide, 'message' => $message];
-        var_dump($unTableauValidation[$nomChamp]);
+
         return $unTableauValidation;
     }
 }
