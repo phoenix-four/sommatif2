@@ -73,11 +73,12 @@ class ControleurContact
         $tValidation = Validateur::validerChamp('message', "#^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüoeçÇ'«»=@:]*$#", $tMessagesJson, $tValidation, true);
         $tValidation = Validateur::validerChamp('responsable_id', "#^\d{1}$#", $tMessagesJson, $tValidation, true);
 
+        //var_dump($tValidation);
         foreach ($tValidation as $validation) {
             if ($validation['valide'] == "faux") {
                 $result = false;
                 $tDonnees = array("tValidation" => $tValidation);
-                echo App::getBlade()->run("contacts.creer", $tDonnees);
+                //     echo App::getBlade()->run("contacts.creer", $tDonnees);
                 return false;
             }
         }
