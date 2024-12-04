@@ -54,7 +54,11 @@
             <input type="email"
                 name="courriel"
                 pattern="^[a-zA-Z0-9][a-zA-Z0-9_-]+([.][a-zA-Z0-9_-]+)*[@][a-zA-Z0-9_-]+([.][a-zA-Z0-9_-]+)*[.][a-zA-Z]{2,}$"
-                value=""
+                value="
+                @php
+                 echo isset($_POST["courriel"]) ? $_POST["courriel"] : ''
+                @endphp
+                "
                 id="courriel" required>
         </p>
         <p class="erreur__message">
@@ -80,7 +84,10 @@
 
             <input type="tel" name="telephone" id="telephone"
                 title="Numéro, 10 chiffres"
-                value=""
+                value="
+                   @php
+                 echo isset($_POST["telephone"]) ? $_POST["telephone"] : ''
+                @endphp"
                 class="notelephone" required
                 minlength="10"
                 maxlength="10"
@@ -120,11 +127,11 @@
                 @endif
             </label>
             <select name="responsable_id" id="responsable_id" required>
-                <option value="">Choisir un responsable</option>
-                <option value="1">Sylvain Lamoureux (Coordonateur départemental)</option>
-                <option value="2">Ève Février (Webmestre)</option>
-                <option value="3">Benoît Frigon (Responsable Étudiant.e d'un jour)</option>
-                <option value="4">Pascal Larose (Coordonateur des stages)</option>
+                <option value="" {{ isset($_POST['responsable_id']) && $_POST['responsable_id'] == '' ? 'selected' : '' }}>Choisir un responsable</option>
+                <option value="1" {{ isset($_POST['responsable_id']) && $_POST['responsable_id'] == '1' ? 'selected' : '' }}>Sylvain Lamoureux (Coordonateur départemental)</option>
+                <option value="2" {{ isset($_POST['responsable_id']) && $_POST['responsable_id'] == '2' ? 'selected' : '' }}>Ève Février (Webmestre)</option>
+                <option value="3" {{ isset($_POST['responsable_id']) && $_POST['responsable_id'] == '3' ? 'selected' : '' }}>Benoît Frigon (Responsable Étudiant.e d'un jour)</option>
+                <option value="4" {{ isset($_POST['responsable_id']) && $_POST['responsable_id'] == '4' ? 'selected' : '' }}>Pascal Larose (Coordonateur des stages)</option>
             </select>
         </p>
 
@@ -152,7 +159,9 @@
             <input type="text"
                 name="sujet" id="sujet"
                 placeholder="Sujet"
-                value=""
+                value="   @php
+                 echo isset($_POST["sujet"]) ? $_POST["sujet"] : ''
+                @endphp"
                 required
                 pattern="^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüœçÇ'«»=@:]*$"
                 title="Caractères alphabétiques français seulement.">
@@ -182,7 +191,9 @@
             <input type="text"
                 name="message" id="message"
                 placeholder="Message"
-                value=""
+                value="   @php
+                 echo isset($_POST["message"]) ? $_POST["message"] : ''
+                @endphp"
                 required
                 pattern="^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüœçÇ'«»=@:]*$"
                 title="Caractères alphabétiques français seulement.">
