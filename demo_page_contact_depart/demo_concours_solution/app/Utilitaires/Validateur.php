@@ -24,7 +24,7 @@ class Validateur
         if (isset($_POST[$nomChamp])) {
             // Si le champ existe dans $_POST
             $valeur = trim($_POST[$nomChamp]);
-            if ($_POST[$nomChamp]) {
+            if ($_POST[$nomChamp]=="acceptation_partage") {
                 if ($valeur == "off") {
                     $valide = 'faux';
                     $message = $unTableauMessagesJson[$nomChamp]['vide'];
