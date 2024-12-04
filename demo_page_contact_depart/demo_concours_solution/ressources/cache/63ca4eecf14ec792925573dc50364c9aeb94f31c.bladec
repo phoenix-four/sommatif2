@@ -2,11 +2,11 @@
 
 <?php $this->startSection('contenu'); ?>
 
-<form action="index.php?controleur=contact&action=inserer" novalidate method="POST">
+<form action="index.php?controleur=contact&action=inserer" method="POST" novalidate>
 
  <h2>Contact</h2>
 
- 
+
  <!-- Nom ---------------------->
  <div class="ctnForm">
  <p>
@@ -21,13 +21,12 @@
  <input type="text"
  name="nom" id="nom"
  placeholder="Nom"
- value = ""
+ value=""
  required
  pattern="^[a-zA-ZÀ-ÿ' -]+$"
- title="Caractères alphabétiques français seulement."
- >
+ title="Caractères alphabétiques français seulement.">
  </p>
- 
+
  <p class="erreur__message">
  <?php if($tValidation != null): ?>
  <?php if($tValidation['nom']['valide']=='faux'): ?>
@@ -38,13 +37,13 @@
  <?php endif; ?>
  </p>
  </div>
- 
+
 
  <!-- Courriel ---------------------->
 
 
  <div class="ctnForm">
- <p>   
+ <p>
  <label for="courriel">Courriel
  <?php if($tValidation !== null): ?>
  <?php if($tValidation['courriel']['valide']=='vrai' ): ?>
@@ -68,10 +67,10 @@
  <?php endif; ?>
  </p>
  </div>
- 
+
 
  <!-- Téléphone ---------------------->
- <div class="ctnForm ctnForm--regulier" >
+ <div class="ctnForm ctnForm--regulier">
  <p>
  <label for="telephone">Numéro de téléphone (10 chiffres)
  <?php if($tValidation != null): ?>
@@ -86,9 +85,8 @@
  value=""
  class="notelephone" required
  minlength="10"
- maxlength="10" 
- pattern="^[0-9]{10}$"
- >
+ maxlength="10"
+ pattern="^[0-9]{10}$">
  </p>
 
  <p class="erreur__message">
@@ -107,25 +105,24 @@
  <p>
  <input name="acceptation_partage"
  id="acceptation_partage"
- type="checkbox"
- >
+ type="checkbox">
  <label for="acceptation_partage"> J’AUTORISE LE PARTAGE DE MON NUMÉRO AVEC UN ÉTUDIANT-GUIDE.</label>
  </p>
  </div>
 
 
  <!-- Destinataire ---------------------->
- 
+
  <div class="ctnForm ctnForm--regulier">
  <p>
  <label for="responsable_id">Destinataire
  <?php if($tValidation != null): ?>
  <?php if($tValidation['responsable_id']['valide']=='vrai'): ?>
  <span class="spriteRETRO spriteRETRO--ok"></span>
- <?php endif; ?> 
+ <?php endif; ?>
  <?php endif; ?>
  </label>
- <select name="responsable_id" id="responsable_id" required >
+ <select name="responsable_id" id="responsable_id" required>
  <option value="">Choisir un responsable</option>
  <option value="1">Sylvain Lamoureux (Coordonateur départemental)</option>
  <option value="2">Ève Février (Webmestre)</option>
@@ -159,13 +156,12 @@
  <input type="text"
  name="sujet" id="sujet"
  placeholder="Sujet"
- value = ""
+ value=""
  required
  pattern="^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüœçÇ'«»=@:]*$"
- title="Caractères alphabétiques français seulement."
- >
+ title="Caractères alphabétiques français seulement.">
  </p>
- 
+
  <p class="erreur__message">
  <?php if($tValidation !=null): ?>
  <?php if($tValidation['sujet']['valide']=='faux'): ?>
@@ -181,7 +177,7 @@
  <!-- Message ---------------------->
  <div class="ctnForm">
  <p>
- <label for="message" >Message
+ <label for="message">Message
  <?php if($tValidation != null): ?>
  <?php if($tValidation['message']['valide']=='vrai' ): ?>
  <span class="spriteRETRO spriteRETRO--ok"></span>
@@ -191,13 +187,12 @@
  <input type="text"
  name="message" id="message"
  placeholder="Message"
- value= ""
+ value=""
  required
  pattern="^[ -.0-9a-zA-ZÀ-ÿ';!?éèàùâêîôûäëïöüœçÇ'«»=@:]*$"
- title="Caractères alphabétiques français seulement."
- >
+ title="Caractères alphabétiques français seulement.">
  </p>
- 
+
  <p class="erreur__message">
  <?php if($tValidation !=null): ?>
  <?php if($tValidation['message']['valide']=='faux'): ?>
@@ -218,7 +213,7 @@
 
 </form>
 
+<?php  echo $this->dump($tValidation);?>;
+
 <?php $this->stopSection(); ?>
-
-
 <?php if (@$_shouldextend[1]) { echo $this->runChild('gabarit'); } ?>

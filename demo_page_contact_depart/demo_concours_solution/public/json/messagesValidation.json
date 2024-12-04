@@ -22,6 +22,10 @@
     "message": {
         "vide": "Serveur: Vous devez entrer un message.",
         "pattern": "Serveur: Pour le message, les accents français, les espaces, les tirets et les apostrophes sont permis."
+    },
+    "acceptation_partage": {
+        "vide": "Serveur: Vous devez accepter le partage.",
+        "pattern": "Nul."
     }
 
 }
